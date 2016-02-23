@@ -1,4 +1,4 @@
-#MeSU statistics
+#MeSU
 
 Useful tools for monitoring MeSU servers:
 
