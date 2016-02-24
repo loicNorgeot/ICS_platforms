@@ -1,11 +1,8 @@
 import subprocess
 
-SQLfile = "pbsacctsql.txt"
-CSVfile = "pbsacctsql.csv"
-
-def createDB():
+def createDB(output):
     try:
-        subprocess.call("pbsacctsql  -b '2016 01 01 00 00 00' -T -S -R > " + SQLfile)
+        subprocess.call("pbsacctsql  -b '2016 01 01 00 00 00' -T -S -R > " + output, shell=True)
     except:
         print "Can't execute pbsacctsql"
 
@@ -38,10 +35,10 @@ def writeCSV(array, fileName):
 
 if __name__ == '__main__':
     updateLabs()
-    createDB()
-    LINES = file2Array(SQLfile)
+    createDB("reporting.txt")
+    LINES = file2Array("reporting.txt")
     STATS = [stats(l) for l in LINES[3:-3]]
-    writeCSV(STATS, CSVfile)
+    writeCSV(STATS, "reporting.csv")
 
     
     
