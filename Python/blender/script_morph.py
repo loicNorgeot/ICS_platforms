@@ -2,7 +2,7 @@
 import bpy
 import sys
 import os
-sys.path.append("/home/loic/Bureau/pymesh/blender/")
+sys.path.append(".")
 import meshes
 
 def readMesh(file):
@@ -129,3 +129,5 @@ if __name__ == "__main__":
                     else:
                         key.value = 0
                     key.keyframe_insert("value", frame=1 + 5*i)
+
+    importMesh(directory + "GeymarFat.mesh")
