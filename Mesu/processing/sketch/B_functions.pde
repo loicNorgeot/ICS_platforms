@@ -10,7 +10,6 @@ void readFile(String file){
   nbUsers = TABLE.length;
   LINES = new row[0];
   for(int i = 0 ; i < nbUsers ; i++){
-    println(i);
     String[] l = TABLE[i].split(",");
     if(l.length != 0)
       LINES = (row[])append(LINES, new row(l[0], l[1], int(l[4])));
