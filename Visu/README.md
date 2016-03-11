@@ -9,12 +9,15 @@ The provided files are meant as backups in case of a need to re-install the syst
 
 Connect with "MetaCity"
 
-Demos are located in /usr/local/share/demos
-Common data in /usr/local/share/data
-Common scripts in /usr/local/bin
-Additionnal softwares in /opt/
+Files location:
+* Demos in                 /usr/local/share/demos
+* Common data in           /usr/local/share/data
+* Common scripts in        /usr/local/bin
+* Common launchers in      /usr/local/launchers
+* Additionnal softwares in /opt/
 
 (maybe) helpful commands:
+
     ln -s /opt/myapp/myappbinary /usr/local/bin/myappbinary
     sudo service lightdm restart
     sudo startx
