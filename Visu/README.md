@@ -12,6 +12,8 @@ The provided files are meant as backups in case of a need to re-install the syst
 * blender 2.76
 * unity 3D 5.1.0
 * UnrealEngine 4.7
+* Code::Blocks 13.12
+* Eclipse 3.8
 * processing 2.2.1
 * processing 3.0.1
 * unitymol
