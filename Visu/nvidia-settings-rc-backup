@@ -1,0 +1,132 @@
+#
+# /home/norgeot/.nvidia-settings-rc
+#
+# Configuration file for nvidia-settings - the NVIDIA X Server Settings utility
+# Generated on Fri Mar 11 21:29:32 2016
+#
+
+# ConfigProperties:
+
+RcFileLocale = C
+ToolTips = Yes
+DisplayStatusBar = Yes
+SliderTextEntries = Yes
+IncludeDisplayNameInConfigFile = Yes
+ShowQuitDialog = No
+UpdateRulesOnProfileNameChange = Yes
+Timer = Memory_Used_(GPU_0),Yes,3000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
+Timer = ECC_Settings,Yes,1000
+Timer = Memory_Used_(GPU_1),Yes,3000
+Timer = Thermal_Monitor_(GPU_1),Yes,1000
+Timer = PowerMizer_Monitor_(GPU_1),Yes,1000
+
+# Attributes:
+
+visu-mur:0.0/SyncToVBlank=1
+visu-mur:0.0/LogAniso=0
+visu-mur:0.0/FSAA=0
+visu-mur:0.0/TextureSharpen=0
+visu-mur:0.0/GammaCorrectedAALines=0
+visu-mur:0.0/TextureClamping=1
+visu-mur:0.0/FXAA=0
+visu-mur:0.0/AllowFlipping=1
+visu-mur:0.0/FSAAAppControlled=1
+visu-mur:0.0/LogAnisoAppControlled=1
+visu-mur:0.0/OpenGLImageSettings=1
+visu-mur:0.0/FSAAAppEnhanced=0
+visu-mur:0.0/GammaCorrectedAALinesValue=16
+visu-mur:0.0/RedBrightness=0.000000
+visu-mur:0.0/GreenBrightness=0.000000
+visu-mur:0.0/BlueBrightness=0.000000
+visu-mur:0.0/RedContrast=0.000000
+visu-mur:0.0/GreenContrast=0.000000
+visu-mur:0.0/BlueContrast=0.000000
+visu-mur:0.0/RedGamma=2.270000
+visu-mur:0.0/GreenGamma=2.270000
+visu-mur:0.0/BlueGamma=2.270000
+visu-mur:0[DPY:GPU-0.DVI-I-0]/Dithering=0
+visu-mur:0[DPY:GPU-0.DVI-I-0]/DitheringMode=0
+visu-mur:0[DPY:GPU-0.DVI-I-0]/DitheringDepth=0
+visu-mur:0[DPY:GPU-0.DVI-I-0]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-0.DVI-I-1]/Dithering=0
+visu-mur:0[DPY:GPU-0.DVI-I-1]/DitheringMode=0
+visu-mur:0[DPY:GPU-0.DVI-I-1]/DitheringDepth=0
+visu-mur:0[DPY:GPU-0.DVI-I-1]/ColorSpace=0
+visu-mur:0[DPY:GPU-0.DVI-I-1]/ColorRange=0
+visu-mur:0[DPY:GPU-0.DVI-I-1]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-0.DP-0]/Dithering=0
+visu-mur:0[DPY:GPU-0.DP-0]/DitheringMode=0
+visu-mur:0[DPY:GPU-0.DP-0]/DitheringDepth=0
+visu-mur:0[DPY:GPU-0.DP-0]/DigitalVibrance=0
+visu-mur:0[DPY:GPU-0.DP-0]/ColorSpace=0
+visu-mur:0[DPY:GPU-0.DP-0]/ColorRange=0
+visu-mur:0[DPY:GPU-0.DP-0]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-0.DP-1]/Dithering=0
+visu-mur:0[DPY:GPU-0.DP-1]/DitheringMode=0
+visu-mur:0[DPY:GPU-0.DP-1]/DitheringDepth=0
+visu-mur:0[DPY:GPU-0.DP-1]/DigitalVibrance=0
+visu-mur:0[DPY:GPU-0.DP-1]/ColorSpace=0
+visu-mur:0[DPY:GPU-0.DP-1]/ColorRange=0
+visu-mur:0[DPY:GPU-0.DP-1]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-0.DVI-D-0]/Dithering=0
+visu-mur:0[DPY:GPU-0.DVI-D-0]/DitheringMode=0
+visu-mur:0[DPY:GPU-0.DVI-D-0]/DitheringDepth=0
+visu-mur:0[DPY:GPU-0.DVI-D-0]/ColorSpace=0
+visu-mur:0[DPY:GPU-0.DVI-D-0]/ColorRange=0
+visu-mur:0[DPY:GPU-0.DVI-D-0]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-0.DP-2]/Dithering=0
+visu-mur:0[DPY:GPU-0.DP-2]/DitheringMode=0
+visu-mur:0[DPY:GPU-0.DP-2]/DitheringDepth=0
+visu-mur:0[DPY:GPU-0.DP-2]/ColorSpace=0
+visu-mur:0[DPY:GPU-0.DP-2]/ColorRange=0
+visu-mur:0[DPY:GPU-0.DP-2]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-0.DP-3]/Dithering=0
+visu-mur:0[DPY:GPU-0.DP-3]/DitheringMode=0
+visu-mur:0[DPY:GPU-0.DP-3]/DitheringDepth=0
+visu-mur:0[DPY:GPU-0.DP-3]/ColorSpace=0
+visu-mur:0[DPY:GPU-0.DP-3]/ColorRange=0
+visu-mur:0[DPY:GPU-0.DP-3]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-1.DVI-I-0]/Dithering=0
+visu-mur:0[DPY:GPU-1.DVI-I-0]/DitheringMode=0
+visu-mur:0[DPY:GPU-1.DVI-I-0]/DitheringDepth=0
+visu-mur:0[DPY:GPU-1.DVI-I-0]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-1.DVI-I-1]/Dithering=0
+visu-mur:0[DPY:GPU-1.DVI-I-1]/DitheringMode=0
+visu-mur:0[DPY:GPU-1.DVI-I-1]/DitheringDepth=0
+visu-mur:0[DPY:GPU-1.DVI-I-1]/ColorSpace=0
+visu-mur:0[DPY:GPU-1.DVI-I-1]/ColorRange=0
+visu-mur:0[DPY:GPU-1.DVI-I-1]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-1.DP-0]/Dithering=0
+visu-mur:0[DPY:GPU-1.DP-0]/DitheringMode=0
+visu-mur:0[DPY:GPU-1.DP-0]/DitheringDepth=0
+visu-mur:0[DPY:GPU-1.DP-0]/DigitalVibrance=0
+visu-mur:0[DPY:GPU-1.DP-0]/ColorSpace=0
+visu-mur:0[DPY:GPU-1.DP-0]/ColorRange=0
+visu-mur:0[DPY:GPU-1.DP-0]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-1.DP-1]/Dithering=0
+visu-mur:0[DPY:GPU-1.DP-1]/DitheringMode=0
+visu-mur:0[DPY:GPU-1.DP-1]/DitheringDepth=0
+visu-mur:0[DPY:GPU-1.DP-1]/DigitalVibrance=0
+visu-mur:0[DPY:GPU-1.DP-1]/ColorSpace=0
+visu-mur:0[DPY:GPU-1.DP-1]/ColorRange=0
+visu-mur:0[DPY:GPU-1.DP-1]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-1.DVI-D-0]/Dithering=0
+visu-mur:0[DPY:GPU-1.DVI-D-0]/DitheringMode=0
+visu-mur:0[DPY:GPU-1.DVI-D-0]/DitheringDepth=0
+visu-mur:0[DPY:GPU-1.DVI-D-0]/ColorSpace=0
+visu-mur:0[DPY:GPU-1.DVI-D-0]/ColorRange=0
+visu-mur:0[DPY:GPU-1.DVI-D-0]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-1.DP-2]/Dithering=0
+visu-mur:0[DPY:GPU-1.DP-2]/DitheringMode=0
+visu-mur:0[DPY:GPU-1.DP-2]/DitheringDepth=0
+visu-mur:0[DPY:GPU-1.DP-2]/ColorSpace=0
+visu-mur:0[DPY:GPU-1.DP-2]/ColorRange=0
+visu-mur:0[DPY:GPU-1.DP-2]/SynchronousPaletteUpdates=0
+visu-mur:0[DPY:GPU-1.DP-3]/Dithering=0
+visu-mur:0[DPY:GPU-1.DP-3]/DitheringMode=0
+visu-mur:0[DPY:GPU-1.DP-3]/DitheringDepth=0
+visu-mur:0[DPY:GPU-1.DP-3]/ColorSpace=0
+visu-mur:0[DPY:GPU-1.DP-3]/ColorRange=0
+visu-mur:0[DPY:GPU-1.DP-3]/SynchronousPaletteUpdates=0
