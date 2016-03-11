@@ -8,7 +8,7 @@ The provided files are meant as backups in case of a need to re-install the syst
 
 ## Installed softwares
 * paraview 4.4.0
-* visit 2.10
+* visit 2.10.1
 * blender 2.76
 * unity 3D 5.1.0
 * UnrealEngine 4.7
@@ -23,6 +23,7 @@ The provided files are meant as backups in case of a need to re-install the syst
 ## Troubleshooting
 
 Connect with "MetaCity"
+Startup script: copy launchers, warp/blend
 
 Files location:
 * Demos in                 /usr/local/share/demos
