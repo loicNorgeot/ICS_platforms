@@ -1,12 +1,18 @@
 # Visualisation platform
+Ressources for the visualisation platform.
 
-## Repository
+## Files
 The provided files are meant as backups in case of a need to re-install the system:
 * xorg.conf : in /etc/X11/, X11 configuration file
 * nv-control-warpblend.c : in ~/Téléchargements/nvidia-settings.../samples. Has to be recompiled with make, which will output a binary in ./binaries/linux, used for blending.
 * default-manager: in /etc/X11/, used with lightdm
+* profile: /etc/profile. contains startup session script (blending, copying launchers, adjusting gamma, maybe mounting later)
+* launchers : ressources for desktop shortcuts. Located in /usr/local/launchers
 
-## Installed softwares
+## System
+### OS
+Ubuntu 14.04 L.T.S
+### Installed softwares
 * paraview 4.4.0
 * visit 2.10.1
 * blender 2.76
