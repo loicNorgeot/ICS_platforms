@@ -2,5 +2,6 @@
 
 Useful tools for monitoring MeSU servers:
 
-* processing : online visualizer
-* pbs_script : reporting script
+* reporting: located in /root/reporting/: run sh update.sh every day or so
+* processing : online visualizer code for ICS website
+
