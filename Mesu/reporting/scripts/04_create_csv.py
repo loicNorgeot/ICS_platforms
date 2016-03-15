@@ -1,5 +1,6 @@
 import os
 from parsing import *
+from random import shuffle
 
 def init_arguments():
     PARSER = parser("Create files linking each user with its laboratory")
@@ -47,6 +48,11 @@ def update_users_labs_names(users, filename):
 def write_csv(users, filename):
     with open(filename,"w") as f:
         f.write("user,labo,hours,\n")
+        for u in users:
+            f.write(u.name+","+u.labName+","+u.hours+",\n")
+    with open(filename[:-4]+"_shuffled.csv","w") as f:
+        f.write("user,labo,hours,\n")
+        shuffle(users)
         for u in users:
             f.write(u.name+","+u.labName+","+u.hours+",\n")
 

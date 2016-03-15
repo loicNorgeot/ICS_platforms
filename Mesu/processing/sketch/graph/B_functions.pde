@@ -153,12 +153,15 @@ void displayLegend(){
     int commandsOffset = 20;
     int verticalOffset = 20;
     textAlign(RIGHT);
-    text("'R' to reset", width - commandsOffset, verticalOffset);
-    text("'L' to sort by lab/user", width - commandsOffset, verticalOffset + 20);
-    text("'E' to explode", width - commandsOffset, verticalOffset + 40);
-    text("'U' to toogle users", width - commandsOffset, verticalOffset + 60);
-    text("'I' to toogle interface", width - commandsOffset, verticalOffset + 80);
-    text("Drag & drop to move", width - commandsOffset, verticalOffset + 100);
+    text("'X' to change time period", width - commandsOffset, verticalOffset);
+    text("'R' to reset", width - commandsOffset, verticalOffset+20);
+    text("'L' to sort by lab/user", width - commandsOffset, verticalOffset + 40);
+    text("'E' to explode", width - commandsOffset, verticalOffset + 60);
+    text("'U' to toogle users", width - commandsOffset, verticalOffset + 80);
+    text("'I' to toogle interface", width - commandsOffset, verticalOffset + 100);
+    text("Drag & drop to move", width - commandsOffset, verticalOffset + 120);
+    textAlign(LEFT);
+    text(legend,20, height-20);
   }
   
   else{
