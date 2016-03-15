@@ -11,7 +11,12 @@ The provided files are meant as backups in case of a need to re-install the syst
 
 ## System
 ### OS
-Ubuntu 14.04 L.T.S
+Ubuntu 14.04 L.T.S 64 bits
+### Hardware
+Workstation DELL Precision 7910
+RAM: 128 go
+Processor: 2 x Intel® Xeon(R) CPU E5-2630 v3 @ 2.40GHz (32 total cores)
+GPU: 2 x Quadro K5200/PCIe/SSE2
 ### Installed softwares
 * paraview 4.4.0
 * visit 2.10.1
@@ -29,7 +34,9 @@ Ubuntu 14.04 L.T.S
 ## Troubleshooting
 
 Connect with "MetaCity"
-Startup script: copy launchers, warp/blend
+Startup script: copy launchers, warp/blend, set gamma and themes
+At startup, if some pixels are missing:
+    gnome-tweak-tool > GTK+ theme switch
 
 Files location:
 * Demos in                 /usr/local/share/demos
