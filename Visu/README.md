@@ -19,7 +19,7 @@ Ubuntu 14.04 L.T.S 64 bits
 * RAM: 128 go
 * Processor: 2 x Intel® Xeon(R) CPU E5-2630 v3 @ 2.40GHz (32 total cores)
 * GPU: 2 x Quadro K5200/PCIe/SSE2
-* 
+
 ### Installed softwares
 * paraview 4.4.0
 * visit 2.10.1
