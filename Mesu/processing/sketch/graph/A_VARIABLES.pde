@@ -1,5 +1,7 @@
-
 //GLOBAL VARIABLES
+
+String csv = "http://mesu-smn.dsi.upmc.fr/data/5_year_users_shuffled.csv";
+int             availableHours = 1000*24*300+2000*24*60;
 
 labo[] LABOS;
 row[]  LINES;
@@ -7,7 +9,6 @@ user[] SORTEDUSERS;
 labo[] SORTEDLABS;
 
 int             totalHours = 0;
-int             availableHours = 6700000;
 int             maxHours   = 0;
 int             maxUsers   = 0;
 

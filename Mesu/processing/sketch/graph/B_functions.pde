@@ -2,7 +2,6 @@
 //GENERAL FUNCTIONS
 
 void readFile(String file){
-  
   String[] table = loadStrings(file);
   String[] TABLE = new String[0];
   for(int i = 1 ; i < table.length ; i++)
@@ -12,9 +11,8 @@ void readFile(String file){
   for(int i = 0 ; i < nbUsers ; i++){
     String[] l = TABLE[i].split(",");
     if(l.length != 0)
-      LINES = (row[])append(LINES, new row(l[0], l[1], int(l[4])));
-    //println(table.getRow(i).getString("Utilisateurs"),
-    //       table.getRow(i).getInt("Nb d'heures"));
+      LINES = (row[])append(LINES, new row(l[0], l[1], int(l[2])));
+      //LINES = (row[])append(LINES, new row(l[0], l[1], int(l[4])));
   }
 }
 
@@ -52,8 +50,7 @@ float diameter(int hours){
 
 void initData(){
   totalHours = 0;
-  readFile("/fileadmin/user_upload/PROCESSING/stats_mesu_2014.csv");
-  //readFile("/home/loic/Téléchargements/stats_mesu_2014.csv");
+  readFile(csv);
   createLabsFromLines(LINES);
   
   for(labo l : LABOS)
@@ -62,7 +59,6 @@ void initData(){
   for(labo l : LABOS)
     for(user u : l.USERS)
       u.init();
-  //print(LABOS);
   
   LABOS = (labo[])append(LABOS, new labo());
   
@@ -73,21 +69,13 @@ void initData(){
   initTime = millis();
 }
 
-/*
-public class labsComparator implements Comparator<labo> {
-    public int compare(labo l1, labo l2){return l2.h - l1.h;}}
-public class usersComparator implements Comparator<user> {
-    public int compare(user u1, user u2){return u2.h - u1.h;}}
-*/
 void sortData(){
-  //Collections.sort(LABOS, new labsComparator());
   SORTEDUSERS = new user[11];
   SORTEDLABS  = new labo[11];
   for(int i = 0 ; i < 11 ; i++){
     int h = 0;
     int labH = 0;
     for(labo l : LABOS){
-      
       boolean labSorted = false;
       for(labo LA : SORTEDLABS)
           if(LA == l)
@@ -103,23 +91,12 @@ void sortData(){
           if(US == u)
             yetSorted = true;
         if(u.h >= h && !yetSorted){
-          //if(u.n.equals("gerolymos"))
-          //println("He is here!");
           SORTEDUSERS[i] = u;
           h = u.h;
         }
       }
     }
   }
-  //for(user u : SORTEDUSERS)
-  //  println(u.n, u.h);
-  /*
-  for(labo l : LABOS)
-    for(user u : l.USERS)
-      if(SORTEDUSERS.length < 11)
-        SORTEDUSERS = (user[])append(SORTEDUSERS, u);
-  */
-  //Collections.sort(SORTEDUSERS, new usersComparator());
 }
 
 void displayLegend(){
