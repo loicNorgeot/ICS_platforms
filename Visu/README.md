@@ -1,5 +1,6 @@
 # Visualisation platform
 Ressources for the visualisation platform (backup and infos)
+![Wallpaper](https://cloud.githubusercontent.com/assets/11873158/13822009/58e61570-eba4-11e5-98e2-11db87965fc8.png)
 
 ## System
 
