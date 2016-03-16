@@ -50,7 +50,7 @@ float diameter(int hours){
 
 void initData(){
   totalHours = 0;
-  readFile(csv);
+  readFile(path+csv);
   createLabsFromLines(LINES);
   
   for(labo l : LABOS)
@@ -108,10 +108,10 @@ void displayLegend(){
     int xOffset    = 0;
     if(sortByLab){
       fill(0,0,0,0.5);
-      rect(0,0,210,230);
+      rect(0,0,250,230);
       textAlign(CENTER);
       fill(0,0,1);
-      text("Labs", 105, 15);
+      text("Labs", 125, 15);
       textAlign(LEFT);
       for(int i = 1 ; i < min(11, LABOS.length) ; i++){
         xOffset = 0;
@@ -122,16 +122,16 @@ void displayLegend(){
         fill(0,0,1);
         xOffset += colorWidth + leftMargin;
         text(l.n, xOffset , i*topMargin+15);
-        xOffset += 80;
+        xOffset += 120;
         text(str(l.h) + " h", xOffset, i*topMargin+15);
       }
     }
     if(!sortByLab){
       fill(0,0,0,0.5);
-      rect(0,0,270,230);
+      rect(0,0,310,230);
       textAlign(CENTER);
       fill(0,0,1);
-      text("Users", 135, 15);
+      text("Users", 155, 15);
       textAlign(LEFT);
       for(int i = 0 ; i < min(10, SORTEDUSERS.length) ; i++){
         xOffset = 0;
@@ -143,7 +143,7 @@ void displayLegend(){
         fill(0,0,1);
         xOffset += colorWidth + leftMargin;
         text(l.n, xOffset , i*topMargin+35);
-        xOffset += 60;
+        xOffset += 100;
         text(u.n, xOffset , i*topMargin+35);
         xOffset += 80;
         text(str(u.h) + " h", xOffset, i*topMargin+35);

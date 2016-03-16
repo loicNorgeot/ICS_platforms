@@ -1,6 +1,7 @@
 //GLOBAL VARIABLES
-
-String csv = "http://mesu-smn.dsi.upmc.fr/data/5_year_users.csv";
+//String path = "http://mesu-smn.dsi.upmc.fr/data/";
+String path = "/fileadmin/user_upload/PROCESSING/";
+String csv = "5_year_users_shuffled.csv";
 String legend = "last 365 days data";
 int availableHours = 1000*24*270+2000*24*30;
 

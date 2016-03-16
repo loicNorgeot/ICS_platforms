@@ -19,22 +19,22 @@ void keyPressed(){
     period+=1;
     period = period%4;
     if(period==0){
-      csv = "http://mesu-smn.dsi.upmc.fr/data/5_total_users_shuffled.csv";
+      csv = "5_total_users_shuffled.csv";
       availableHours = 1;
       legend = "data from service opening";
     }
     if(period==1){
-      csv = "http://mesu-smn.dsi.upmc.fr/data/5_year_users_shuffled.csv";
+      csv = "5_year_users_shuffled.csv";
       availableHours = 1000*24*270+2000*24*30;
       legend = "last 365 days data";
     }
     if(period==2){
-      csv = "http://mesu-smn.dsi.upmc.fr/data/5_month_users_shuffled.csv";
+      csv = "5_month_users_shuffled.csv";
       availableHours = 1000*24*30+2000*24*30;
       legend = "last month data";
     }
     if(period==3){
-      csv = "http://mesu-smn.dsi.upmc.fr/data/5_week_users_shuffled.csv";
+      csv = "5_week_users_shuffled.csv";
       availableHours = 1000*24*7+2000*24*7;
       legend = "last week data";
     }

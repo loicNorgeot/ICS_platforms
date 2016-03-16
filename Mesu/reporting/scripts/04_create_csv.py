@@ -46,6 +46,14 @@ def update_users_labs_names(users, filename):
         return users
 
 def write_csv(users, filename):
+    contained = ["Institut Du Calcul", "7238", "Affectation", "927",     "925",     "7371",        "7138",           "Not found", "Microbiennes", "Equipe 4"]
+    replaces =  ["ICS",                "LCQB", "Partenaires", "UFR 927", "UFR 925", "Imagerie Bio","Evolution Seine","Divers",    "LBBM",         "Institut de myologie"]
+    for u in users:
+        for c,r in zip(contained, replaces):
+            if c in u.labName:
+                u.labName=r
+        if u.labName=="":
+            u.labName="Divers"
     with open(filename,"w") as f:
         f.write("user,labo,hours,\n")
         for u in users:

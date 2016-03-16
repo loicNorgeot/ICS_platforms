@@ -31,15 +31,15 @@ mv $d/globals.txt $d/0_globals.txt
 python $s/$py -last total -labos  -o $d/1_total_labos.txt
 python $s/$py -last total -users  -o $d/1_total_users.txt
 python $s/$py -last total -queues -o $d/1_total_queues.txt
-#Year globals
+##Year globals
 python $s/$py -last year -labos  -o $d/2_year_labos.txt
 python $s/$py -last year -users  -o $d/2_year_users.txt
 python $s/$py -last year -queues -o $d/2_year_queues.txt
-#Month globals
+##Month globals
 python $s/$py -last month -labos  -o $d/3_month_labos.txt
 python $s/$py -last month -users  -o $d/3_month_users.txt
 python $s/$py -last month -queues -o $d/3_month_queues.txt
-#Day globals
+##Day globals
 python $s/$py -last week -labos  -o $d/4_week_labos.txt
 python $s/$py -last week -users  -o $d/4_week_users.txt
 python $s/$py -last week -queues -o $d/4_week_queues.txt
