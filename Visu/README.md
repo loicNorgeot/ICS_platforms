@@ -1,13 +1,21 @@
 # Visualisation platform
-Ressources for the visualisation platform.
+Ressources for the visualisation platform (backup and infos)
 
 ## Files
-The provided files are meant as backups in case of a need to re-install the system:
-* xorg.conf : in /etc/X11/, X11 configuration file
-* nv-control-warpblend.c : in ~/Téléchargements/nvidia-settings.../samples. Has to be recompiled with make, which will output a binary in ./binaries/linux, used for blending.
-* default-manager: in /etc/X11/, used with lightdm
+* /usr/local/launchers/ : ressources for desktop shortcuts
+* /usr/local/icons/ : icons for desktop shortcuts
+* /usr/share/lightdm/50-*.conf: lightdm configuration files (guest and user sessions)
+* /etc/X11/default-display-manager: used to force lightdm
+* /usr/share/xsessions/gnome-fallback.desktop: parameters for gnome
+* /usr/lib/lightdm/guest-session-auto.sh : launch script for guests
+* /usr/local/bin/guest_config: startup script for guest session
+* /usr/local/bin/login_config: startup script for user session
+* /etc/lightdm/lightdm.conf : lightdm parameters
+* /opt/nvidia-settings/samples/nv-control-warpblend.c : compiled with make, binary in ./binaries/linux, used for blending.
 * profile: /etc/profile. contains startup session script (blending, copying launchers, adjusting gamma, maybe mounting later)
-* launchers : ressources for desktop shortcuts. Located in /usr/local/launchers
+* ~/nvidia-settings-rc : useless
+* /etc/X11/xorg.conf : X11 parameter file
+
 
 ## System
 
@@ -26,6 +34,7 @@ Ubuntu 14.04 L.T.S 64 bits
 * blender 2.76
 * unity 3D 5.1.0
 * UnrealEngine 4.7
+* Python anaconda3
 * Code::Blocks 13.12
 * Eclipse 3.8
 * processing 2.2.1
