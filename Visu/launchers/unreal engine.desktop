@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Processing
+Type=Application
+Exec=/usr/local/bin/unrealengine
+Icon=/usr/local/icons/unreal.png
+Categories=Graphics;3DGraphics;Viewer;Qt;
+Name[fr_FR]=unreal engine

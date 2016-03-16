@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Visit
+Type=Application
+Exec=/usr/local/bin/visit
+Icon=/usr/local/icons/visit.jpg
+Categories=Graphics;
+Name[fr_FR]=visit

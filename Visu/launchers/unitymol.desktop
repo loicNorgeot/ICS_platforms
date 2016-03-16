@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Processing
+Type=Application
+Exec=/usr/local/bin/unitymol
+Icon=/usr/local/icons/unitymol.jpg
+Categories=Graphics;3DGraphics;Viewer;Qt;
+Name[fr_FR]=unitymol

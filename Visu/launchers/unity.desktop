@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Processing
+Type=Application
+Exec=/usr/local/bin/unity
+Icon=/usr/local/icons/unity.png
+Categories=Graphics;3DGraphics;Viewer;Qt;
+Name[fr_FR]=unity

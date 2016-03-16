@@ -1,0 +1,9 @@
+ln -s /usr/local/demos/ /home/$USER/Bureau/demos &>/dev/null
+cp -f /usr/local/launchers/*.desktop /home/$USER/Bureau/ &>/dev/null
+#gsettings set org.gnome.desktop.interface gtk-theme "Adwaita" &>/dev/null
+gsettings set org.gnome.desktop.interface gtk-theme "Adwaita" &>/dev/null
+gsettings set org.gnome.desktop.interface icon-theme "ubuntu-mono-dark" &>/dev/null
+gsettings set org.gnome.desktop.wm.preferences theme "Ambiance" &>/dev/null
+warpblend &>/dev/null
+xgamma -gamma 2.325 &>/dev/null
+

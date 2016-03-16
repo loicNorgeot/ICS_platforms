@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Medit
+Type=Application
+Exec=/usr/local/bin/medit -fs
+Icon=/usr/local/icons/medit.png
+Categories=Graphics;
+Terminal=true
+Name[fr_FR]=medit

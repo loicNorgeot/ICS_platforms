@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Blender
+Icon=/usr/local/icons/blender.png
+Path=/opt/blender-2.76b-linux-glibc211-x86_64
+Exec=/usr/local/bin/blender
+StartupNotify=false
+StartupWMClass=Blender
+OnlyShowIn=Unity;
+X-UnityGenerated=true
+Name[fr_FR]=blender-2.76

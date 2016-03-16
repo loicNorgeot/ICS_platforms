@@ -1,0 +1,12 @@
+ln -s /usr/local/demos/ /tmp/$USER/Bureau/demos &>/dev/null
+cp -f /usr/local/launchers/*.desktop /tmp/$USER/Bureau/ &>/dev/null
+warpblend &>/dev/null
+xgamma -gamma 2.325 &>/dev/null
+
+gsettings set org.gnome.desktop.background show-desktop-icons true &>/dev/null
+gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/warty-final-ubuntu.png &>/dev/null
+
+gsettings set org.gnome.desktop.interface gtk-theme "Adwaita" &>/dev/null
+gsettings set org.gnome.desktop.interface icon-theme "ubuntu-mono-dark" &>/dev/null
+gsettings set org.gnome.desktop.wm.preferences theme "Ambiance" &>/dev/null
+

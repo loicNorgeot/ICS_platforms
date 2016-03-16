@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Processing
+Type=Application
+Exec=sh /opt/jmol/jmol.sh
+Icon=/usr/local/icons/jmol.png
+Categories=Graphics;3DGraphics;Viewer;Qt;
+Name[fr_FR]=jmol

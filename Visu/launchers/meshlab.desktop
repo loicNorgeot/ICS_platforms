@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Meshlab
+Type=Application
+Exec=meshlab
+Icon=/usr/local/icons/meshlab.png
+Categories=Graphics;3DGraphics;Viewer;Qt;
+Name[fr_FR]=meshlab

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Processing
+Type=Application
+Exec=/usr/local/bin/travis
+Icon=/usr/local/icons/travis.png
+Categories=Graphics;3DGraphics;Viewer;Qt;
+Name[fr_FR]=travis

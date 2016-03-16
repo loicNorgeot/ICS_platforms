@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Blend
+Type=Application
+Exec=/usr/local/bin/paraview
+Icon=/usr/local/icons/paraview.png
+Categories=Graphics;
+Name[fr_FR]=paraview

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Processing
+Type=Application
+Exec=/usr/local/bin/processing-3.0.1
+Icon=/usr/local/icons/processing.png
+Categories=Graphics;3DGraphics;Viewer;Qt;
+Name[fr_FR]=processing 3
