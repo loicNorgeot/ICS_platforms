@@ -6,6 +6,7 @@
 import os
 import bpy
 import mathutils
+import colorsys
 
 from bpy.props import (BoolProperty,
     FloatProperty,
@@ -20,10 +21,10 @@ from bpy_extras.io_utils import (ImportHelper,
     )
 
 bl_info = {
-    "name": "MESH format",
-    "description": "Import-Export MESH, Import/export simple .MESH file.",
+    "name": "Mesh 3d models (*.mesh)",
+    "description": "Imports and exports 3d models triangulations, with triangles references.",
     "author": "Loïc NORGEOT",
-    "version": (0, 0),
+    "version": (1, 0),
     "blender": (2, 76, 0),
     "location": "File > Import-Export",
     "warning": "", # used for warning icon and text in addons panel
@@ -78,15 +79,26 @@ class ImportMESH(bpy.types.Operator, ImportHelper):
 
         scene = context.scene
 
-        for m in meshes:
+        objects = []
+        for i,m in enumerate(meshes):
             obj = bpy.data.objects.new(m.name, m)
+            bpy.ops.object.select_all(action='DESELECT')
             scene.objects.link(obj)
             scene.objects.active = obj
-            obj.select = True
-            obj.matrix_world = global_matrix
+            mat = bpy.data.materials.new(m.name+"_material_"+str(i))
+            mat.diffuse_color = colorsys.hsv_to_rgb(float(i/len(meshes)),1,1)
+            obj.data.materials.append(mat)
+            objects.append(obj)
 
         scene.update()
-
+        bpy.ops.object.select_all(action='DESELECT')
+        for o in objects:
+            o.select=True
+        bpy.ops.object.join()
+        bpy.ops.object.editmode_toggle()
+        bpy.ops.mesh.remove_doubles()
+        bpy.ops.object.editmode_toggle()
+        
         return {'FINISHED'}
 
 class ExportMESH(bpy.types.Operator, ExportHelper):
@@ -154,15 +166,11 @@ def load(operator, context, filepath):
     filepath = os.fsencode(filepath)
     file = open(filepath, 'r')
 
-    verts = []
-    triangles = []
-    refs = []
-    nV = 0
-    nT = 0
-    readVertices = False
-    readTriangles = False
-
-    iV = iT = 0
+    verts,triangles,quads = [],[],[]
+    refsT, refsQ = [], []
+    nV = nT = nQ = 0
+    readVertices = readTriangles = readQuads = False
+    iV = iT = iQ = 0
 
     with open(filepath, 'r') as f:
 
@@ -190,40 +198,56 @@ def load(operator, context, filepath):
                         print(line.split()[:3])
                     iT += 1
                     triangles.append((px, py, pz,r))
-                    refs.append(r)
+                    refsT.append(r)
                 else:
                     readTriangles = False
-                    
+    
+            #Triangles reading
+            if (readQuads and (nQ>0)):
+                if(iQ<nQ):
+                    try:
+                        px, py, pz, pa, r = [int(x)-1 for x in line.split()[:5]]
+                    except ValueError:
+                        print(line.split()[:4])
+                    iQ += 1
+                    quads.append((px, py, pz,pa,r))
+                    refsQ.append(r)
+                else:
+                    readQuads = False
+    
             #Number recording
             if (readVertices and (nV == 0)):
                 nV = int(line.split()[0])
             if (readTriangles and (nT == 0)):
                 nT = int(line.split()[0])
-            
+            if (readQuads and (nQ == 0)):
+                nQ = int(line.split()[0])
+        
             #Reading activation
             try:
                 if (line.split() == ["Vertices"]):
                     readVertices = True
                 if (line.split() == ["Triangles"]):
                     readTriangles = True
+                if (line.split() == ["Quadrilaterals"]):
+                    readQuads = True
             except:
                 print("Aight")
 
         print("FILE OPENED")
         print("NUMBER OF VERTICES  = ", nV)
         print("NUMBER OF TRIANGLES = ", nT)
+        print("NUMBER OF QUADS = ", nQ)
 
     meshes = []
 
-    triangleArray = []
-    REFS = set(refs)
+    REFS = set(refsT+refsQ)
     for i,r in enumerate(REFS):
-        refTriangles = [t[:3] for t in triangles if t[3]==r]
-        # Assemble mesh
+        refFaces = [t[:-1] for t in triangles+quads if t[-1]==r]
         mesh_name = bpy.path.display_name_from_filepath(filepath)
         mesh = bpy.data.meshes.new(name=mesh_name)
         meshes.append(mesh)
-        mesh.from_pydata(verts, [], refTriangles)
+        mesh.from_pydata(verts, [], refFaces)
         mesh.validate()
         mesh.update()
 
@@ -231,34 +255,40 @@ def load(operator, context, filepath):
 
 
 def save(operator, context, filepath, global_matrix = None):
-    # Export the selected mesh
-    APPLY_MODIFIERS = True # TODO: Make this configurable
+    
+    #Get the selected object
+    APPLY_MODIFIERS = True
     if global_matrix is None:
         global_matrix = mathutils.Matrix()
     scene = context.scene
+    bpy.ops.object.duplicate()
     obj = scene.objects.active
+
+    #Convert the big n-gons in triangles if necessary
+    bpy.context.tool_settings.mesh_select_mode=(False,False,True) #optional
+    bpy.ops.object.editmode_toggle()
+    bpy.ops.mesh.select_all(action='DESELECT')
+    bpy.ops.mesh.select_face_by_sides(number=4, type='GREATER')
+    bpy.ops.mesh.quads_convert_to_tris(quad_method='BEAUTY', ngon_method='BEAUTY')
+    bpy.ops.object.editmode_toggle()
+
+    #Get the mesh
     mesh = obj.to_mesh(scene, APPLY_MODIFIERS, 'PREVIEW')
-
-    # Apply the inverse transformation
-    obj_mat = obj.matrix_world
-    #mesh.transform(global_matrix * obj_mat)
-
     verts = mesh.vertices[:]
-    triangles = [ f for f in mesh.tessfaces ]
+    triangles = [ f for f in mesh.polygons if len(f.vertices) == 3 ]
+    quads = [ f for f in mesh.polygons if len(f.vertices) == 4 ]
 
-    # Write geometry to file
+    #Open and write the .mesh file header
     meshFile = os.fsencode(filepath)
     fp = open(meshFile, 'w')
     fp.write('MeshVersionFormatted 1\nDimension 3\n')
+    #VERTICES
     fp.write("Vertices\n")
     fp.write(str(len(verts)))
     fp.write("\n")
     for v in verts:
-        x = v.co[0]
-        y = v.co[1]
-        z = v.co[2]
-        #print(x,y,z)
-        fp.write(str(x) + " " + str(y) + " " + str(z) + " " + str(1) + "\n")
+        fp.write(str(v.co[0]) + " " + str(v.co[1]) + " " + str(v.co[2]) + " " + str(0) + "\n")
+    #TRIANGLES
     fp.write("Triangles\n")
     fp.write(str(len(triangles))) 
     fp.write("\n")
@@ -266,83 +296,54 @@ def save(operator, context, filepath, global_matrix = None):
         for v in t.vertices:
             fp.write(str(v+1))
             fp.write(" ")
-        fp.write(str(1))
+        fp.write(str(t.material_index    ))
+        fp.write('\n')
+    #QUADRILATERALS
+    fp.write("Quadrilaterals\n")
+    fp.write(str(len(quads)))
+    fp.write("\n")
+    for t in quads:
+        for v in t.vertices:
+            fp.write(str(v+1))
+            fp.write(" ")
+        fp.write(str(t.material_index))
         fp.write('\n')
     fp.close()
 
-    #Write sol file
-    solFile = None
-
-    """
-    if(obj.data.vertex_colors):
-        hmin = 0.0025 * max(bpy.context.object.dimensions) # 0.25 %
-        hmax = 0.02  * max(bpy.context.object.dimensions) # 2 %
+    #Solutions according to the weight paint mode (0 to 1 by default)
+    vgrp = bpy.context.active_object.vertex_groups.keys()
+    #If a vertex group is present
+    if(len(vgrp)>0):
+        vmin = 0
+        vmax = 1
         try:
             T = bpy.context.scene.my_tool
-            print(T)
-            hmin = T.hmin/100.0 * max(bpy.context.object.dimensions)  
-            print(hmin)
-            hmax = T.hmax/100.0 * max(bpy.context.object.dimensions)
+            vmin = T.hmin/100.0 * max(bpy.context.object.dimensions)
+            vmax = T.hmax/100.0 * max(bpy.context.object.dimensions)
         except:
-            print("MMG Addon not installed -> hmin = 0.25 %, hmax = 2%")
+            print("The mmg addon is not installed, values set from 0 to 1")
+        #Open and write the .sol file
         solFile = filepath[:-5] + ".sol"
         fp = open( os.fsencode(solFile), 'w')
         fp.write("MeshVersionFormatted 2\n")
         fp.write("Dimension 3\n")
         fp.write("SolAtVertices\n")
         fp.write(str(len(verts)))
-        fp.write("\n1 1\n") 
-        #Compute colors
-        vertex_color = obj.data.vertex_colors.active.data
-        print(len(vertex_color))
-        cols = [None] * len(verts)
+        fp.write("\n1 1\n")
+        GROUP = bpy.context.active_object.vertex_groups.active
+        cols = [1.0] * len(verts)
         for i,t in enumerate(triangles):
             for j,v in enumerate(t.vertices):
-                cols[v] = float(vertex_color[3*i + j].color.r)
+                try:
+                    cols[v] = float(1.0 - GROUP.weight(v))
+                except:
+                    continue
         for c in cols:
-            fp.write('%.8f' % (hmin + c * (hmax-hmin)))
+            fp.write('%.8f' % (vmin + c * (vmax-vmin)))
             fp.write("\n")
         fp.close()
-    """
 
-
-
-    #WEIGHT PAINT
-    vgrp=bpy.context.active_object.vertex_groups.keys()
-    if(len(vgrp)>0):
-        hmin = 0.0025 * max(bpy.context.object.dimensions) # 0.25 %
-        hmax = 0.02  * max(bpy.context.object.dimensions) # 2 %
-        try:
-            T = bpy.context.scene.my_tool
-            print(T)
-            hmin = T.hmin/100.0 * max(bpy.context.object.dimensions)  
-            print(hmin)
-            hmax = T.hmax/100.0 * max(bpy.context.object.dimensions)
-        except:
-            print("MMG Addon not installed -> hmin = 0.25 %, hmax = 2%")
-        
-        solFile = filepath[:-5] + ".sol"
-        fp = open( os.fsencode(solFile), 'w')
-        fp.write("MeshVersionFormatted 2\n")
-        fp.write("Dimension 3\n")
-        fp.write("SolAtVertices\n")
-        fp.write(str(len(verts)))
-        fp.write("\n1 1\n") 
-
-        #Compute colors
-        if(len(vgrp)>0):
-            GROUP = bpy.context.active_object.vertex_groups.active
-            cols = [1.0] * len(verts)
-            for i,t in enumerate(triangles):
-                for j,v in enumerate(t.vertices):
-                    try:
-                        cols[v] = float(1.0 - GROUP.weight(v))
-                    except:
-                        continue#cols[v] = 1.0
-            for c in cols:
-                fp.write('%.8f' % (hmin + c * (hmax-hmin)))
-                fp.write("\n")
-        fp.close()
+    bpy.ops.object.delete()
 
     return {'FINISHED'}
 
